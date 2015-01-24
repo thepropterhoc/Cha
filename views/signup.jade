@@ -1,0 +1,26 @@
+link(rel='stylesheet', href='/stylesheets/signupstyle.css')
+script(src='/javascripts/signup.js')
+body
+    .container-narrow
+      .masthead
+        ul.nav.nav-pills.pull-right
+          li
+            a(href='/') Home
+          |           
+          li
+            a(href='/about') About
+          |           
+        |         
+        #title.hexagon-sm.hexagon-success.h2.muted Cha
+      |       
+      hr
+      |   
+      .form-wrapper
+        form
+          .form-group
+              label(for='exampleInputEmail1') Email address
+              |     
+              input#exampleInputEmail1.form-control(type='email', placeholder='Enter email', name='email')
+            button.btn.btn-default(type='submit', onclick='signup(this.form)') Submit
+      .footer
+        p Euclid and Euler

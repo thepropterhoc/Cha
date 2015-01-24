@@ -1,2 +1,49 @@
-h1= title
-p Welcome to #{title}
+link(rel='stylesheet', href='/stylesheets/style.css')
+body
+    .container-narrow
+      .masthead
+        ul.nav.nav-pills.pull-right
+          li.active
+            a(href='/') Home
+          |           
+          li
+            a(href='/about') About
+          |           
+        |         
+        #title.hexagon-sm.hexagon-success.h2.muted Cha
+      |       
+      hr
+      |       
+      .jumbotron
+        h1 Hungry?
+        |         
+        p.lead
+          | Sell your unused exchanges.  Buy other exchanges for less.  Get your food quicker.   
+        |         
+        a.btn.btn-large.btn-success(href='/signup') Sign up today
+      |       
+      hr
+      |       
+      .row-fluid.marketing
+        .span6
+          h4 Fast
+          |           
+          p
+            | Donec id elit non mi porta gravida at eget metus. Maecenas faucibus mollis interdum.
+          |           
+          h4 Cheap
+          |           
+          p
+            | Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Cras mattis consectetur purus sit amet fermentum.
+          |           
+          h4 Convenient
+          |           
+          p Maecenas sed diam eget risus varius blandit sit amet non magna.
+        |         
+      |       
+      hr
+      |       
+      .footer
+        p Euclid and Euler
+    // /container
+
