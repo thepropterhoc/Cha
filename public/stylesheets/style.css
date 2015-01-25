@@ -65,6 +65,11 @@ h4 {
 .footer {
 	font-family: 'Lobster', cursive;
 	color: #bbb;
+	position:fixed;
+	left:10px;
+	bottom:0px;
+	height:30px;
+	width:40%;
 }
 
 .masthead {
