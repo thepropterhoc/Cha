@@ -15,12 +15,47 @@ body
       |       
       hr
       |   
+      h2 So close....
+      p
+        | Cha is a work in progress.  We'll let you know once we have enough students to make it happen.  Want us to update you when we're ready?  We can email you once it's up and running (now accepting donations of coffee).
       .form-wrapper
         form
           .form-group
               label(for='exampleInputEmail1') Email address
               |     
-              input#exampleInputEmail1.form-control(type='email', placeholder='Enter email', name='email')
-            button.btn.btn-default(type='submit', onclick='signup(this.form)') Submit
+              input.form-control(type='email', placeholder='Enter email', name='email', id="emailField")
+            button.btn.btn-default(type='button', id='Submit') Submit
       .footer
         p Euclid and Euler
+script.
+  $('#Submit').on('click', function(e) {
+
+    function ErrorMsg(result) {
+      
+    };
+
+    console.log("Hello");
+    
+    var $form = $(this);
+    console.log($form.serialize());
+    $.ajax({
+        'type': 'POST',
+        'url': '/add',
+        'contentType' : "application/json; charset=utf-8",
+        'data': JSON.stringify({email : $('#emailField').val()}),
+        'dataType': 'jsonp',
+        success:function(data){
+          window.location.replace("http://stackoverflow.com");
+        },
+        error:function(err){
+          if (err.status == 200) {
+            window.location.replace("/success");
+          }
+          else {
+            console.log("Error");
+            alert("Improper input.  Try again.");
+          }
+        }
+    });
+    return false;
+  });
