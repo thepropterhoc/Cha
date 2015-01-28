@@ -1,61 +1,152 @@
 link(rel='stylesheet', href='/stylesheets/style.css')
 body
-    .container-narrow.main
-      .masthead
-        ul.nav.nav-pills.pull-right
-          li.active
-            a(href='/') Home
-          |           
-          li
-            a(href='/about') About
-          |           
-        |         
-        #title.hexagon-sm.hexagon-success.h2.muted Cha
+  .row
+    .col-xl-12
+      .container-narrow
+        .masthead
+          ul.nav.nav-pills.pull-right
+            li.active
+              a(href='/') Home
+            |           
+            li
+              a(href='/about') About
+            |           
+          |         
+          #title.hexagon-sm.hexagon-success.h2.muted Cha
+        |       
+        hr
+        |       
+        .jumbotron
+          h1 Hungry?
+          |         
+          h3
+            | Sell your unused exchanges or buy other exchanges for delivery.  <br /> Get your food quicker.   
+          |         
+          a.btn.btn-large.btn-success(href='/signup') Sign up today
+        |       
+        hr
+        |       
+        .row-fluid.marketing
+          .span6
+            .row-fluid
+              .col-lg-2
+                img.img-circle(src="/images/clock.png")
+              .col-lg-10
+                .tag Fast
+                |           
+                p.line
+                  | Order any food on campus or pickup food for other people, all through the application, using your debit/credit card.  No paper, no worries. 
+                |           
+            .row-fluid
+              .col-lg-2
+                img.img-circle(src="/images/money.png")
+              .col-lg-10
+                .tag Cheap
+                |           
+                p.line
+                  | Get exchanges for a few bucks less and sell those you aren't going to use.  Why not get paid if you have extra exchanges lying around stinking up the place?  
+                |       
+            .row-fluid
+              .col-lg-2  
+                img.img-circle(src="/images/location.png")
+              .col-lg-10 
+                .tag Convenient
+                |           
+                p.line 
+                  | See where students have exchanges available, see how long it'll be until they get you your food, order exactly what you want and go meet to pick it up.  Only sell exchanges when you want to.    
+                |   
+  |       
+  hr
+  | 
+  .row-fluid
+    .col-md-12
+      p
+        | <br />
+       
+  .row
+    .col-xl-12
+      .container
+        .row-fluid
+          .col-lg-12
+            h1.inlineTitle
+              | -> So what does this actually LOOK like?  <-
+        .row-fluid
+          .col-md-2
+            h1.numbered
+              | 1.
+          .col-md-8
+            h2
+              | Offer your exchange for sale if you have extras.
+          .col-md-2
+            img.img-circle(src="/images/market.png")
+        .row-fluid
+          .col-md-12
+            p
+              | <br />
+        .row-fluid
+          .col-md-2
+            h1.numbered
+              | 2.
+          .col-md-8
+            h2
+              | Browse available exchanges from other students and order food from campus restaurants, or receive notification someone wants to buy your exchange
+          .col-md-2
+            img.img-circle(src="/images/phone.png")
+        .row-fluid
+          .col-md-12
+            p
+              | <br />
+        .row-fluid
+          .col-lg-2
+            h1.numbered
+              | 3.
+          .col-lg-8
+            h2
+              | Buy the food you or your purchaser wants, meet at set location.
+          .col-lg-2
+            img.img-circle(src="/images/location.png")
+        .row-fluid
+          .col-md-12
+            p
+              | <br />
+        .row-fluid
+          .col-md-2
+            h1.numbered
+              | 4.
+          .col-md-8
+            h2
+              | Hand over the goods for profit or enjoy your cheaper meal. 
+          .col-md-2
+            img.img-circle(src="/images/food.png")
+        .row-fluid
+          .col-md-12
+            p
+              | <br />
+  .row-fluid
+    .col-md-12
+      p
+        | <br />
       |       
       hr
-      |       
-      .jumbotron
-        h1 Hungry?
-        |         
-        h3
-          | Sell your unused exchanges or buy other exchanges for delivery.  <br /> Get your food quicker.   
-        |         
-        a.btn.btn-large.btn-success(href='/signup') Sign up today
-      |       
-      hr
-      |       
-      .row-fluid.marketing
-        .span6
-          .row-fluid
-            .col-lg-2
-              img.img-circle(src="/images/clock.png")
-            .col-lg-10
-              .tag Fast
-              |           
-              p.line
-                | Order any food on campus, through the application, all using your debit/credit card.  No paper, no worries. 
-              |           
-          .row-fluid
-            .col-lg-2
-              img.img-circle(src="/images/money.png")
-            .col-lg-10
-              .tag Cheap
-              |           
-              p.line
-                | Get exchanges for a few bucks less, get more food IN YOUR BELLY, get paid if you have extra exchanges lying around stinking up the place.  
-              |       
-          .row-fluid
-            .col-lg-2  
-              img.img-circle(src="/images/location.png")
-            .col-lg-10 
-              .tag Convenient
-              |           
-              p.line 
-                | See where students have exchanges available, see how long it'll be until they get you your food, order exactly what you want and go meet to pick it up.  Only sell exchanges when you want to.    
-              |       
+      |  
+  .row-fluid
+    .col-md-12
+      h1.inlineTitle
+        | Let us know you want this.  We'll make it happen. 
+  .row-fluid
+    .col-md-12
+      p
+        | <br />
       |       
       hr
+      |     
+  .row-fluid
+    .col-md-12
+      p
+        | <br />
       |       
+      hr
+      |   
       .footer
         p Euclid and Euler - two OU undergrads with way too much free time
     // /container
