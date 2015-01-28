@@ -137,7 +137,7 @@ ul {
 	text-align: right;
 }
 
-@media screen and (max-width: 900px) {
+@media screen and (max-width: 990px) {
   .numbered {
     text-align: center;
   }
