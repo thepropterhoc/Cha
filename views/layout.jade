@@ -4,6 +4,15 @@ html
     title= "Food.  For you."
     link(rel='stylesheet', href='/stylesheets/bootstrap.min.css')
     link(href='http://fonts.googleapis.com/css?family=Josefin+Sans:400,600,700|Lobster', rel='stylesheet', type='text/css')
+    link(rel='stylesheet', href='/stylesheets/style.css')
     script(src='http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js')
     script(src='/javascripts/bootstrap.min.js')
-  body!= body
+  body
+    .row.gray-background.toolbar
+      .col-xl-12
+        .masthead
+          ul.nav.nav-pills.pull-right
+            block actives 
+          |         
+          #title.hexagon-sm.hexagon-success.h2.muted Cha
+    block content

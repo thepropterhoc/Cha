@@ -1,155 +1,143 @@
-link(rel='stylesheet', href='/stylesheets/style.css')
-body
-  .row
-    .col-xl-12
-      .container-narrow
-        .masthead
-          ul.nav.nav-pills.pull-right
-            li.active
-              a(href='/') Home
-            |           
-            li
-              a(href='/about') About
-            |           
-          |         
-          #title.hexagon-sm.hexagon-success.h2.muted Cha
+extends layout
+
+block actives
+  li.active
+    a(href='/') Home
+  |           
+  li
+    a(href='/about') About
+  |          
+
+block content
+  .jumbotron
+    h1 Hungry?
+    |         
+    h3
+      | Sell your unused exchanges or buy other exchanges for delivery.      
+    a.btn.btn-large.btn-success(href='/signup') Sign up today     
+  .pitch-wrapper
+    .row-fluid
+      .col-lg-2.col-lg-offset-1.buffered-col
+        img.img-circle(src="/images/clock.png").action-icon
+      .col-lg-8.buffered-col
+        .tag Fast
+        |           
+        p.line
+          | Order any food on campus or pickup food for other people, all through the application, using your debit/credit card.  No paper, no worries. 
+        |           
+    .row-fluid
+      .col-lg-2.col-lg-offset-1
+        img.img-circle(src="/images/money.png").action-icon
+      .col-lg-8
+        .tag Cheap
+        |           
+        p.line
+          | Get exchanges for a few bucks less and sell those you aren't going to use.  Why not get paid if you have extra exchanges lying around stinking up the place?  
         |       
-        hr
-        |       
-        .jumbotron
-          h1 Hungry?
-          |         
-          h3
-            | Sell your unused exchanges or buy other exchanges for delivery.  <br /> Get your food quicker.   
-          |         
-          a.btn.btn-large.btn-success(href='/signup') Sign up today
-        |       
-        hr
-        |       
-        .row-fluid.marketing
-          .span6
-            .row-fluid
-              .col-lg-2
-                img.img-circle(src="/images/clock.png")
-              .col-lg-10
-                .tag Fast
-                |           
-                p.line
-                  | Order any food on campus or pickup food for other people, all through the application, using your debit/credit card.  No paper, no worries. 
-                |           
-            .row-fluid
-              .col-lg-2
-                img.img-circle(src="/images/money.png")
-              .col-lg-10
-                .tag Cheap
-                |           
-                p.line
-                  | Get exchanges for a few bucks less and sell those you aren't going to use.  Why not get paid if you have extra exchanges lying around stinking up the place?  
-                |       
-            .row-fluid
-              .col-lg-2  
-                img.img-circle(src="/images/location.png")
-              .col-lg-10 
-                .tag Convenient
-                |           
-                p.line 
-                  | See where students have exchanges available, see how long it'll be until they get you your food, order exactly what you want and go meet to pick it up.  Only sell exchanges when you want to.    
-                |   
-  |       
-  hr
-  | 
+    .row-fluid
+      .col-lg-2.col-lg-offset-1
+        img.img-circle(src="/images/location.png").action-icon
+      .col-lg-8 
+        .tag Convenient
+        |           
+        p.line 
+          | See where students have exchanges available, see how long it'll be until they get you your food, order exactly what you want and go meet to pick it up.  Only sell exchanges when you want to.    
+          |   
+    .row-fluid
+      .col-md-12
+        p
+          | <br />
+    .row-fluid
+      .col-md-12.green-background
+        h1.inlineTitle
+          | "Ok, so I can buy exchanges at OU.  How does it work?"
+    .row-fluid
+      .col-md-12
+        p
+          | <br />
   .row-fluid
-    .col-md-12
-      p
-        | <br />
-       
-  .row
-    .col-xl-12
-      .container
+    .col-xl-12.gray-background
+      .container.explanation
         .row-fluid
-          .col-lg-12
-            h1.inlineTitle
-              | -> So what does this actually LOOK like?  <-
-        .row-fluid
-          .col-md-2
-            .row-fluid
-              .col-md-1
-            h1.numbered
-              | 1.
-          .col-md-8
-            h2
-              | Offer your exchange for sale if you have extras.
-          .col-md-2
-            img.img-circle(src="/images/market.png").inlineImage
+          .col-md-5
+            h1.centered
+              | I am a seller
+          .col-md-2    
+            p
+              |<br />
+          .col-md-5
+            h1.centered
+              | I am a buyer
         .row-fluid
           .col-md-12
             p
               | <br />
         .row-fluid
-          .col-md-2
-            h1.numbered
-              | 2.
-          .col-md-8
-            h2
-              | Browse exchanges from other students and order food on campus, or get a ping someone wants to buy your exchange
+          .col-md-5.content-row
+            h2.centered
+              | Post your exchange
+          .col-md-2    
+            img.img-circle(src="/images/market.png").inlineImage
+          .col-md-5.content-row
+            h2.centered
+              | Suddenly, become hungry
+        .row-fluid
+          .col-md-12
+            p
+              | <br />
+        .row-fluid
+          .col-md-5.content-row
+            h2.centered
+              | Get a ping for an order
           .col-md-2
             img.img-circle(src="/images/phone.png").inlineImage
+          .col-md-5.content-row
+            h2.centered
+              | Order some grub
         .row-fluid
           .col-md-12
             p
               | <br />
         .row-fluid
-          .col-md-2
-            h1.numbered
-              | 3.
-          .col-md-8
-            h2
-              | Buy the food you or your purchaser wants, meet at set location.
+          .col-md-5.content-row
+            h2.centered
+              | Head to the buyer
           .col-md-2
             img.img-circle(src="/images/location.png").inlineImage
+          .col-md-5.content-row
+            h2.centered
+              | Head to the seller
         .row-fluid
           .col-md-12
             p
               | <br />
         .row-fluid
-          .col-md-2
-            h1.numbered
-              | 4.
-          .col-md-8
-            h2
-              | Hand over the goods for profit or enjoy your cheaper meal. 
+          .col-md-5.content-row
+            h2.centered
+              | Hand over the grub, get paid
           .col-md-2
             img.img-circle(src="/images/food.png").inlineImage
-        .row-fluid
-          .col-md-12
-            p
-              | <br />
-  .row-fluid
-    .col-md-12
-      p
-        | <br />
-      |       
-      hr
-      |  
+          .col-md-5.content-row
+            h2.centered
+              | Get the grub, feast
   .row-fluid
     .col-md-12
       h1.inlineTitle
-        | Join us.  So we can get you some quicker food, for less. 
+        | "Ok, you've convinced me.  Now who exactly are you?"
   .row-fluid
     .col-md-12
       p
-        | <br />
-      |       
-      hr
-      |     
-  .row-fluid
-    .col-md-12
-      p
-        | <br />
-      |       
-      hr
-      |   
-      .footer
-        p Euclid and Euler - two OU undergrads with way too much free time
-    // /container
-
+        | <br /> 
+  .row-fluid.profile-wrapper
+    .col-md-4.col-md-offset-1.profile
+      img.img-circle(src='/images/Shelby.png').profile-picture
+      p.profile-header
+        | Shelby
+      p.profile-text
+        | Computer Engineering (Entrepreneurship). <br />First addicted to coding at age 0.1f.
+    .col-md-4.col-md-offset-2.profile   
+      img.img-circle(src='/images/Bryce.png').profile-picture
+      p.profile-header
+        | Bryce
+      p.profile-text
+        | Chemical Engineering (Entrepreneurship). <br /> Probably buried in the lab, occasionally escapes to found ventures. 

@@ -28,7 +28,7 @@ exports.success = function(req, res){
 };
 
 exports.index = function(req, res){
-  res.render('index', { title: 'Express' })
+  res.render('index')
 };
 
 exports.signup = function(req, res){
