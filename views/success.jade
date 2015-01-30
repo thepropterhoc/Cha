@@ -1,20 +1,16 @@
-link(rel='stylesheet', href='/stylesheets/style.css')
+extends layout
 link(rel='stylesheet', href='/stylesheets/success.css')
-body
-    .container-narrow
-      .masthead
-        ul.nav.nav-pills.pull-right
-          li
-            a(href='/') Home
-          |           
-          li
-            a(href='/about') About
-          |           
-        |         
-        #title.hexagon-sm.hexagon-success.h2.muted Cha
-      |       
-      hr
-      |       
-      h3.tag Welcome to the revolution.  <br /><br />Tell your friends.  <br /><br />Or not.  <br /><br />Your choice if you want them to go hungry.  
-      .footer
-        p Euclid and Euler - two OU undergrads with way too much free time
+
+block actives
+  li
+    a(href='/') Home
+  |           
+  li
+    a(href='/about') About
+  | 
+
+block content
+  .container-narrow
+    p
+      | <br />      
+    h3.tag Welcome to the revolution.  <br /><br />Tell your friends.  <br /><br />Or not.  <br /><br />Your choice if you want them to go hungry.  
