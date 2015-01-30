@@ -28,10 +28,6 @@ h4 {
 	padding-bottom: 100px;
 }
 
-.main {
-	min-height: 2500px;
-}
-
 .container-narrow > hr {
   margin: 30px 0;
 }
@@ -55,6 +51,10 @@ h4 {
   margin-top: 50px;
 }
 
+.btn {
+  font-weight: 800;
+}
+
 #title {
 	margin-left: 20%;
 	padding-top: 4px;
@@ -63,6 +63,10 @@ h4 {
 
 ul {
 	width: 30%;
+}
+
+#signup {
+  font-weight: 800;
 }
 
 .nav-pills>li>a {
@@ -156,23 +160,19 @@ ul {
   margin: 0px auto;
 }
 
-@media screen and (max-width: 990px) {
-  .numbered {
-    text-align: center;
-  }
-
-  .tag {
-  	text-align: center;
-  }
-}
-
 .profile-wrapper {
   display: block;
 	margin-top: 200px;
 	min-height: 500px;
   padding-top: auto;
-  padding-bottom: auto;
+  padding-bottom: 20px;
 	background-color: black;
+}
+
+@media screen and (max-width: 990px) {
+  .tag {
+    text-align: center;
+  }
 }
 
 .profile {
@@ -190,6 +190,7 @@ ul {
   color: rgb(180,180,180);
   font-size: 16pt;
   font-weight: 200;
+  margin-bottom: 50px;
 }
 
 .black-background {
