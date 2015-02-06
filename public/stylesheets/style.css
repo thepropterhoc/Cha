@@ -1,8 +1,58 @@
+@font-face {
+    font-family: sf;
+    src: url('/fonts/SanFranciscoText-Thin.otf');
+    font-weight: 300;
+}
+
+@font-face {
+    font-family: sf;
+    src: url('/fonts/SanFranciscoText-Light.otf');
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: sf;
+    src: url('/fonts/SanFranciscoText-Regular.otf');
+    font-weight: 500;
+}
+
+@font-face {
+    font-family: sf;
+    src: url('/fonts/SanFranciscoText-Medium.otf');
+    font-weight: 600;
+}
+
+@font-face {
+    font-family: sf;
+    src: url('/fonts/SanFranciscoText-Semibold.otf');
+    font-weight: 700;
+}
+
+@font-face {
+    font-family: sf;
+    src: url('/fonts/SanFranciscoText-Bold.otf');
+    font-weight: 800;
+}
+
+@font-face {
+    font-family: sf;
+    src: url('/fonts/SanFranciscoText-Heavy.otf');
+    font-weight: 900;
+}
+
+
+
 body {
-  font-family: 'Josefin Sans', sans-serif;
+  font-family: sf, sans-serif;
+  font-weight: 500;
 }
 
 h1 {
+  font-weight: 900;
+  font-size: 32pt;
+}
+
+h2 {
   font-weight: 800;
 }
 
@@ -22,6 +72,11 @@ h3 {
 
 .muted>a {
   color: white;
+}
+
+p {
+  font-weight: 200;
+  font-size: 2em;
 }
 
 h4 {
@@ -114,10 +169,10 @@ ul {
   display: block;
 	text-align: center;
 	margin-top: auto;
-  margin-bottom: auto;
 	font-weight: 800;
-  padding-top: 40px;
-  padding-bottom: 40px;
+  padding-top: 70px;
+  padding-bottom: 70px;
+  vertical-align: middle;
 }
 
 .inlineImage {
@@ -138,8 +193,6 @@ ul {
 }
 
 .explanation {
-	margin-top: 40px;
-	margin-bottom: 40px;
 	padding-top: 40px;
 	padding-bottom: 40px;
 }
@@ -165,40 +218,45 @@ ul {
 }
 
 .profile-wrapper {
-  display: block;
-	margin-top: 200px;
-	min-height: 500px;
-  padding-top: auto;
-  padding-bottom: 20px;
-	background-color: black;
+  background-color: black;
+  background: black;
 }
 
-@media screen and (max-width: 990px) {
-  .tag {
-    text-align: center;
-  }
+.profile-wrapper * {
+  background-color: black;
+  background: black;
+  color: black;
 }
 
 .profile {
+  display: block;
+  margin-top: auto;
+  padding-top: 100px;
+  padding-bottom: 100px;
 	text-align: center;
+  background-color: black;
 }
 
 .profile-header {
 	color: white;
 	font-size: 30pt	;
-	padding-top: 10px;
 	font-weight: 800;
+  background-color: black;
 }
 
 .profile-text {
   color: rgb(180,180,180);
   font-size: 16pt;
   font-weight: 200;
-  margin-bottom: 50px;
+  background-color: black;
+}
+
+.white {
+  color: white;
 }
 
 .black-background {
-	background-color: black;
+	background-color: black !important;
 }
 
 .gray-background {
@@ -209,12 +267,15 @@ ul {
   background-color: #5cb85c;
 }
 
+.green {
+  color: #5cb85c;
+}
+
 .clear-background {
   background-color: transparent;
 }
 
 .profile-picture {
-	margin-top: 70px;
 	border: 3px solid white;
 	min-width: 150px;
 	min-height: 150px;
@@ -237,6 +298,10 @@ ul {
   padding-top: 20px;
   padding-bottom: 20px;
   border-bottom: 1px solid rgb(190,190,190);
+}
+
+.security {
+  padding: 70px;
 }
 
 .pitch-wrapper {
