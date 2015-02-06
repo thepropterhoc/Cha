@@ -239,6 +239,8 @@ ul {
 
 .profile-header {
 	color: white;
+  margin-top: 10px;
+  margin-bottom: 20px;
 	font-size: 30pt	;
 	font-weight: 800;
   background-color: black;
