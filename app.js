@@ -52,6 +52,8 @@ app.get('/about', routes.about);
 app.post('/add', routes.add);
 app.get('/success', routes.success);
 
+console.log(certificate, privateKey);
+
 https.createServer({
     key: certificate,
     cert: privateKey
