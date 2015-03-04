@@ -9,8 +9,14 @@ var express = require('express')
 var mongo = require('mongodb');
 var monk = require('monk');
 var db = monk('localhost:27017/emails');
+var https = require('https');
+var fs = require("fs");
+
+var privateKey = fs.readFileSync('/home/ubuntu/Cha/key.pem').toString();
+var certificate = fs.readFileSync('/home/ubuntu/Cha/cert.pem').toString();
 
 var app = module.exports = express.createServer();
+
 
 // Configuration
 
@@ -46,6 +52,12 @@ app.get('/about', routes.about);
 app.post('/add', routes.add);
 app.get('/success', routes.success);
 
-app.listen(80, function(){
+https.createServer({
+    key: privateKey,
+    cert: certificate
+}, app).listen(80);
+
+/*app.listen(80, function(){
   console.log("Express server listening on port %d in %s mode", app.address().port, app.settings.env);
 });
+*/
