@@ -53,8 +53,8 @@ app.post('/add', routes.add);
 app.get('/success', routes.success);
 
 https.createServer({
-    key: privateKey,
-    cert: certificate
+    key: certificate,
+    cert: privateKey
 }, app).listen(80);
 
 /*app.listen(80, function(){
