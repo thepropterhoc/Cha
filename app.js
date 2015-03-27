@@ -9,11 +9,12 @@ var express = require('express')
 var mongo = require('mongodb');
 var monk = require('monk');
 var db = monk('localhost:27017/emails');
-var https = require('https');
+var http = require('https');
 var fs = require("fs");
 
-var privateKey = fs.readFileSync('/home/ubuntu/Cha/key.pem').toString();
-var certificate = fs.readFileSync('/home/ubuntu/Cha/cert.pem').toString();
+var privateKey = fs.readFileSync('/home/ubuntu/key.pem').toString();
+var cert = fs.readFileSync('/home/ubuntu/cha.crt').toString();
+var auths = [fs.readFileSync('/home/ubuntu/g1.crt').toString(), fs.readFileSync('/home/ubuntu/g2.crt').toString(), fs.readFileSync('/home/ubuntu/g3.crt').toString()];
 
 var app = module.exports = express.createServer();
 
@@ -54,9 +55,10 @@ app.get('/success', routes.success);
 
 console.log(certificate, privateKey);
 
-https.createServer({
-    key: certificate,
-    cert: privateKey
+var https = http.createServer({
+    key: privateKey,
+    cert: certificate,
+    ca: auths
 }, app).listen(80);
 
 /*app.listen(80, function(){
