@@ -55,9 +55,13 @@ app.get('/success', routes.success);
 
 var https = http.createServer({
     key: privateKey,
-    cert: certificate,
+    cert: cert,
     ca: auths
-}, app).listen(80);
+}, app);
+
+https.listen(80, function(){
+  console.log("Express server listening on port %d in %s mode", app.address().port, app.settings.env);
+});
 
 /*app.listen(80, function(){
   console.log("Express server listening on port %d in %s mode", app.address().port, app.settings.env);
