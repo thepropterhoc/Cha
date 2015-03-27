@@ -14,6 +14,8 @@ var https = require('https');
 var fs = require("fs");
 var bodyParser  = require('body-parser');
 var forceSSL = require('express-force-ssl');
+var favicon = require('serve-favicon');
+
 
 var privateKey = fs.readFileSync('/home/ubuntu/privateKey.pem').toString();
 var cert = fs.readFileSync('/home/ubuntu/cha.crt').toString();
@@ -23,6 +25,9 @@ var app = module.exports = express();
 
 
 // Configuration
+
+
+app.use(favicon(__dirname + '/public/images/icon.ico'));
 
 app.set('views', __dirname + '/views');
 app.set('view engine', 'jade');
