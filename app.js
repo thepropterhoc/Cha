@@ -13,6 +13,7 @@ var http = require('http');
 var https = require('https');
 var fs = require("fs");
 var bodyParser  = require('body-parser');
+var forceSSL = require('express-force-ssl');
 
 var privateKey = fs.readFileSync('/home/ubuntu/privateKey.pem').toString();
 var cert = fs.readFileSync('/home/ubuntu/cha.crt').toString();
@@ -37,15 +38,7 @@ app.use(function(req,res,next){
   next();
 });
 app.use(express.static(__dirname + '/public'));
-
-function requireHTTPS(req, res, next) {
-    if (!req.secure) {
-        //FYI this should work for local development as well
-        return res.redirect('https://' + req.get('host') + req.url);
-    }
-    next();
-}
-app.use(requireHTTPS);
+app.use(forceSSL);
 
 app.get('/', routes.index);
 app.get('/signup', routes.signup);
@@ -58,6 +51,8 @@ https.createServer({
     cert: cert,
     ca: auths
 }, app).listen(443);
+
+http.createServer(app).listen(80);
 
 /*app.listen(80, function(){
   console.log("Express server listening on port %d in %s mode", app.address().port, app.settings.env);
