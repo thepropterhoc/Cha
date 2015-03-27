@@ -38,14 +38,6 @@ app.use(function(req,res,next){
 });
 app.use(express.static(__dirname + '/public'));
 
-app.configure('development', function(){
-  app.use(express.errorHandler({ dumpExceptions: true, showStack: true }));
-});
-
-app.configure('production', function(){
-  app.use(express.errorHandler());
-});
-
 // Routes
 
 app.get('/', routes.index);
