@@ -17,7 +17,7 @@ var privateKey = fs.readFileSync('/home/ubuntu/privateKey.pem').toString();
 var cert = fs.readFileSync('/home/ubuntu/cha.crt').toString();
 var auths = [fs.readFileSync('/home/ubuntu/g1.crt').toString(), fs.readFileSync('/home/ubuntu/g2.crt').toString(), fs.readFileSync('/home/ubuntu/g3.crt').toString()];
 
-var app = module.exports = express.createServer();
+var app = module.exports = express();
 
 
 // Configuration
