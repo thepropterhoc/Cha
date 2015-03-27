@@ -46,13 +46,16 @@ app.get('/about', routes.about);
 app.post('/add', routes.add);
 app.get('/success', routes.success);
 
-http.createServer(app).listen(80);
-
 https.createServer({
     key: privateKey,
     cert: cert,
     ca: auths
 }, app).listen(443);
+
+http.createServer(function (req, res) {
+    res.writeHead(301, { "Location": "https://" + req.headers['host'] + req.url });
+    res.end();
+}).listen(80);
 
 /*app.listen(80, function(){
   console.log("Express server listening on port %d in %s mode", app.address().port, app.settings.env);
