@@ -38,7 +38,14 @@ app.use(function(req,res,next){
 });
 app.use(express.static(__dirname + '/public'));
 
-// Routes
+function requireHTTPS(req, res, next) {
+    if (!req.secure) {
+        //FYI this should work for local development as well
+        return res.redirect('https://' + req.get('host') + req.url);
+    }
+    next();
+}
+app.use(requireHTTPS);
 
 app.get('/', routes.index);
 app.get('/signup', routes.signup);
@@ -51,11 +58,6 @@ https.createServer({
     cert: cert,
     ca: auths
 }, app).listen(443);
-
-http.createServer(function (req, res) {
-    res.writeHead(301, { "Location": "https://" + req.headers['host'] + req.url });
-    res.end();
-}).listen(80);
 
 /*app.listen(80, function(){
   console.log("Express server listening on port %d in %s mode", app.address().port, app.settings.env);
