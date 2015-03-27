@@ -12,6 +12,7 @@ var db = monk('localhost:27017/emails');
 var http = require('http');
 var https = require('https');
 var fs = require("fs");
+var bodyParser  = require('body-parser');
 
 var privateKey = fs.readFileSync('/home/ubuntu/privateKey.pem').toString();
 var cert = fs.readFileSync('/home/ubuntu/cha.crt').toString();
@@ -27,8 +28,10 @@ app.set('view engine', 'jade');
 app.set('view options', {
   layout: false
 });
-app.use(express.bodyParser());
-app.use(express.methodOverride());
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({
+  extended: true
+}));
 app.use(app.router);
 app.use(function(req,res,next){
   req.db = db;
