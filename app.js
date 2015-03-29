@@ -6,6 +6,8 @@
 var express = require('express')
   , routes = require('./routes');
 
+var api = require('./routes/api');
+
 var mongo = require('mongodb');
 var monk = require('monk');
 var db = monk('localhost:27017/emails');
@@ -22,7 +24,6 @@ var cert = fs.readFileSync('/home/ubuntu/cha.crt').toString();
 var auths = [fs.readFileSync('/home/ubuntu/g1.crt').toString(), fs.readFileSync('/home/ubuntu/g2.crt').toString(), fs.readFileSync('/home/ubuntu/g3.crt').toString()];
 
 var app = module.exports = express();
-
 
 // Configuration
 
@@ -50,6 +51,13 @@ app.get('/signup', routes.signup);
 app.get('/about', routes.about);
 app.post('/add', routes.add);
 app.get('/success', routes.success);
+
+app.post('/api/users/add', api.addUser);
+app.post('/api/users/update', api.updateUser);
+app.post('/api/users/login', api.loginUser);
+app.get('/api/exchanges/count', api.countExchanges);
+app.post('/api/exchanges/add', api.addExchange);
+app.post('/api/exchanges/buy', api.buyExchange);
 
 https.createServer({
     key: privateKey,
