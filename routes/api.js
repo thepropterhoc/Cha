@@ -43,8 +43,10 @@ exports.addUser = function(req, res) {
 
   collection.findOne({email: req.body.email}, function(err, records){
     if (records && records.email == req.body.email) {
-      res.json("Email exists already");
-      res.end(); 
+      res.json({
+        status : "Error", 
+        description : "Email exists already"
+      });
     } else {
       var hashed = passwordHash.generate(req.body.password)
 
@@ -64,11 +66,15 @@ exports.addUser = function(req, res) {
 
       collection.insert(newUser, {}, function(err, records){
         if(err){
-          res.json(err);
-          res.end();
+          res.json({
+            status : "Error",
+            description : err
+          });
         } else {
-          res.json(records);
-          res.end();
+          res.json({
+            status : "Success",
+            description : records
+          });
         }
       });
     }
@@ -90,9 +96,19 @@ exports.updateUser = function(req, res) {
 
   collection.update({_id : req.body._id}, {$set : user}, {}, function(err, records){
     if(err){
-      res.json(err);
+      res.json({
+        status : "Error",
+        description : err
+      });
     } else {
+<<<<<<< HEAD
       res.json({"status" : "success"});
+=======
+      res.json({
+        status : "Success",
+        description : records
+      });
+>>>>>>> 954f029594baedb4b923bc6a27c84405a8715b66
     }
   });
 };
@@ -104,15 +120,27 @@ exports.loginUser = function(req, res){
   console.log(query);
   collection.findOne({email : req.body.email}, function(err, record){
     if (err) {
-      res.end("Error finding user email");
+      res.json({
+        status : "Error",
+        description : err
+      });
     } else if(record && record.email == req.body.email) {
       if (passwordHash.verify(pswd, record.hash) == true) {
-        res.json(record);
+        res.json({
+          status : "Success",
+          description : record
+        });
       } else {
-        res.json("Invalid login");
+        res.json({
+          status : "Error",
+          description : "Invalid login"
+        });
       }
     } else {
-      res.json("Email not found");
+      res.json({
+        status : "Error",
+        description : "Email not found"
+      });
     }
   });
 };
@@ -129,16 +157,25 @@ exports.addExchange = function(req, res){
   };
   exchanges.insert(exchange, function(err, returnedExchange){
     if(err){
-      res.end("Error adding exchange");
+      res.json({
+        status : "Error",
+        description : "Error adding exchange"
+      });
     } else {
       users.findById(sID, function(err, returnedUser){
         var userExchanges = returnedUser.exchangesID;
         userExchanges.push(returnedExchange._id.toHexString());
         users.updateById(sID, {$set : {exchangesID : userExchanges}}, function(err, returnedUser){
           if (err){
-            res.json(err);
+            res.json({
+              status : "Error",
+              description : err
+            });
           } else {
-            res.json(returnedExchange);
+            res.json({
+              status : "Success",
+              description : returnedExchange
+            });
           }
         });
       });
@@ -151,9 +188,15 @@ exports.removeExchange = function(req, res){
   var exchanges = db.get('exchanges');
   exchanges.remove({sellerID : sID}, function(err, docs){
     if(err){
-      res.json(err);
+      res.json({
+        status : "Error",
+        description : err
+      });
     } else {
-      res.json("Success");
+      res.json({
+        status : "Success",
+        description : docs
+      });
     }
   });
 };
@@ -161,10 +204,18 @@ exports.removeExchange = function(req, res){
 exports.countExchanges = function(req, res){
   var exchanges = db.get('exchanges');
   exchanges.find({}, function(err, records){
-    var count = records.length
-    res.json({
-      exchangeCount : count
-    });
+    if(err){
+      res.json({
+        status : "Error",
+        description : err
+      });
+    } else {
+      var count = records.length
+      res.json({
+        status : "Success",
+        description : count
+      });
+    }
   })
 };
 
@@ -183,13 +234,22 @@ exports.buyExchange = function(req, res){
   };
   users.findOne({_id:bID}, function(err, buyer){
     if (err || buyer.balance < 9.00 || buyer.enabled != 1){
-      res.end("Buyer cannot make transaction");
+      res.json({
+        status : "Error", 
+        description : "Buyer cannot make transaction"
+      });
     } else {
       exchanges.find({purchased: { $ne: 1 }}, {sort : {postDate : 1}}, function(err, records){
         if (err) {
-          res.end(err);
+          res.json({
+            status : "Error",
+            desciption : err
+          });
         } else if (records.length == 0){
-          res.end("No exchanges available");
+          res.json({
+            status : "Error",
+            description : "No exchanges available"
+          });
         } else {
           console.log(records);
           var exchange = records[0];
@@ -197,7 +257,10 @@ exports.buyExchange = function(req, res){
             exchanges.updateById(exchange._id.toHexString(), {purchased : 1, saleDate: new Date().toISOString(), sellerID : exchange.sellerID});
             exchanges.findById(exchange._id.toHexString(), function(err, returnedExchange){
               if (err){
-                res.json(err);
+                res.json({
+                  status : "Error",
+                  description : err
+                });
               } else {
                 var receipt = {
                   exchangeID : exchange._id.toHexString(),
@@ -209,34 +272,52 @@ exports.buyExchange = function(req, res){
                 };
                 receipts.insert(receipt, function(err, returnedReceipt){
                   if(err){
-                    res.json(err);
+                    res.json({
+                      status : "Error",
+                      description : err
+                    });
                   } else {
                     users.findById(bID, function(err, buyer){
                       if(err){
-                        res.json(err);
+                        res.json({
+                          status : "Error",
+                          description : err
+                        });
                       } else {
                         var buyerReceipts = buyer.receiptsID;
                         buyerReceipts.push(returnedReceipt._id.toHexString());
                         var newBal = parseFloat(buyer.balance) - parseFloat(returnedReceipt.saleAmount);
                         users.updateById(bID, {$set: {receiptsID : buyerReceipts, balance:newBal}}, function(err, returnedBuyer){
                           if(err){
-                            res.json(err);
+                            res.json({
+                              status : "Error",
+                              description : err
+                            });
                           } else {
-                            res.json(returnedBuyer);
+                            res.json({
+                              status : "Success",
+                              description : returnedBuyer
+                            });
                           }
                         });
                       }
                     });
                     users.findById(exchange.sellerID, function(err, seller){
                       if (err){
-                        res.json(err);
+                        res.json({
+                          status : "Error",
+                          description : err
+                        });
                       } else {
                         var sellerReceipts = seller.receiptsID;
                         sellerReceipts.push(returnedReceipt._id.toHexString());
                         var newBal = parseFloat(seller.balance) + parseFloat(returnedReceipt.reimburseAmount);
                         users.updateById(exchange.sellerID, {$set : {balance: newBal, receiptsID : sellerReceipts}}, function(err, returnedSeller){
                           if(err){
-                            res.json(err);
+                            res.json({
+                              status : "Error",
+                              description : err
+                            });
                           } else {
                             console.log("Seller updated");
                           }
