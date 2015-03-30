@@ -77,15 +77,11 @@ exports.addUser = function(req, res) {
 
 exports.updateUser = function(req, res) {
   var collection = db.get('users');
-
-  var hashed = passwordHash.generate(req.body.password)
-
   var user = {
     firstName : req.body.firstName,
     lastName : req.body.lastName,
     cell : req.body.cell,
     email : req.body.email,
-    hash : hashed,
     fourByfour : req.body.fourByfour,
     ccToken : req.body.ccToken,
     enabled : req.body.enabled, 
@@ -96,7 +92,7 @@ exports.updateUser = function(req, res) {
     if(err){
       res.json(err);
     } else {
-      res.json(records);
+      res.json({"status" : "success"});
     }
   });
 };
