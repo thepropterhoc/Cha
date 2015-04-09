@@ -6,6 +6,8 @@
 var mongo = require('mongodb');
 var monk = require('monk');
 var db = monk('localhost:27017/live');
+var users = db.get('users');
+var exchanges = db.get('exchanges');
 var passwordHash = require('password-hash');
 
 /*
@@ -38,17 +40,18 @@ var passwordHash = require('password-hash');
   }
 */
 
-exports.addUser = function(req, res) {
-  var collection = db.get('users'); 
+exports.addUser = function(req, res) { 
+  console.log("Adding user");
 
-  collection.findOne({email: req.body.email}, function(err, records){
+  users.findOne({email: req.body.email}, function(err, records){
     if (records && records.email == req.body.email) {
       res.json({
         status : "Error", 
         description : "Email exists already"
       });
     } else {
-      var hashed = passwordHash.generate(req.body.password)
+      console.log(req.body.password);
+      var hashed = passwordHash.generate(req.body.password);
 
       var newUser = {
           firstName : req.body.firstName,
@@ -64,7 +67,7 @@ exports.addUser = function(req, res) {
           balance : 0.0
       };
 
-      collection.insert(newUser, {}, function(err, records){
+      users.insert(newUser, {}, function(err, records){
         if(err){
           res.json({
             status : "Error",
@@ -82,7 +85,6 @@ exports.addUser = function(req, res) {
 };
 
 exports.updateUser = function(req, res) {
-  var collection = db.get('users');
 
   var hashed = passwordHash.generate(req.body.password)
 
@@ -98,7 +100,7 @@ exports.updateUser = function(req, res) {
     balance : req.body.balance
   }
 
-  collection.update({_id : req.body._id}, {$set : user}, {}, function(err, records){
+  users.update({_id : req.body._id}, {$set : user}, {}, function(err, records){
     if(err){
       res.json({
         status : "Error",
@@ -114,11 +116,9 @@ exports.updateUser = function(req, res) {
 };
 
 exports.loginUser = function(req, res){
-  var collection = db.get('users');
   var pswd = req.body.password;
   var query = {email : req.body.email};
-  console.log(query);
-  collection.findOne({email : req.body.email}, function(err, record){
+  users.findOne({email : req.body.email}, function(err, record){
     if (err) {
       res.json({
         status : "Error",
@@ -126,10 +126,11 @@ exports.loginUser = function(req, res){
       });
     } else if(record && record.email == req.body.email) {
       if (passwordHash.verify(pswd, record.hash) == true) {
+        res.cookie('user', record._id);
         res.json({
-          status : "Success",
-          description : record
-        });
+        status : "Success",
+        description : record
+      })
       } else {
         res.json({
           status : "Error",
@@ -146,8 +147,6 @@ exports.loginUser = function(req, res){
 };
 
 exports.addExchange = function(req, res){
-  var exchanges = db.get('exchanges');
-  var users = db.get('users');
   var sID = req.body.sellerID;
   var today = new Date().toISOString();
   var exchange = {
