@@ -10,152 +10,48 @@ block actives
 
 block content
   .container-fluid
+    .jumbotron.section
+      h1 Hungry?
+      |         
+      h3
+        | Sell or buy unused meal exchanges.  <br /> It's that easy.
+      a.btn.btn-large.btn-success(href='/signup') Sign up today
     .row-fluid
-      .col-xl-12
-        .jumbotron
-          h1 Hungry?
-          |         
-          h3
-            | Get and sell food with your unused exchanges. <br /> Buy food from sellers with extra exchanges.  
-          a.btn.btn-large.btn-success(href='/signup') Sign up today
-    .row-fluid
-      .col-xl-12     
-        .pitch-wrapper
-          .row-fluid
-            .col-lg-2.col-lg-offset-1.buffered-col
-              img.img-circle(src="/images/clock.png").action-icon
-            .col-lg-8.buffered-col
-              .tag Fast
-              |           
-              p.line
-                | Order any food on campus or pickup food for other people, all through the application, using your debit/credit card.  No paper, no worries. 
-              |           
-          .row-fluid
-            .col-lg-2.col-lg-offset-1
-              img.img-circle(src="/images/money.png").action-icon
-            .col-lg-8
-              .tag Cheap
-              |           
-              p.line
-                | Get exchanges for a few bucks less and sell those you aren't going to use.  Why not get paid if you have extra exchanges lying around stinking up the place?  
-              |       
-          .row-fluid
-            .col-lg-2.col-lg-offset-1
-              img.img-circle(src="/images/location.png").action-icon
-            .col-lg-8 
-              .tag Convenient
-              |           
-              p.line 
-                | See where students have exchanges available, see how long it'll be until they get you your food, order exactly what you want and go meet to pick it up.  Only sell exchanges when you want to.    
-                |   
-          .row-fluid
-            .col-md-12
-              p
-                | <br />
-          .row-fluid
-            .col-md-12.green-background
-              h1.inlineTitle.white
-                | "Ok, so I can buy exchanges at OU.  How does it work?"
-          .row-fluid
-            .col-md-12
-              p
-                | <br />
-    .row-fluid
-      .col-xl-12.gray-background
-        .container.explanation
-          .row-fluid
-            .col-md-5
-              h1.centered
-                | I am a seller
-            .col-md-2    
-              p
-                |<br />
-            .col-md-5
-              h1.centered
-                | I am a buyer
-          .row-fluid
-            .col-md-12
-              p
-                | <br />
-          .row-fluid
-            .col-md-5.content-row
-              p.centered
-                | Post your exchange
-            .col-md-2    
-              img.img-circle(src="/images/market.png").inlineImage
-            .col-md-5.content-row
-              p.centered
-                | Suddenly, become hungry
-          .row-fluid
-            .col-md-12
-              p
-                | <br />
-          .row-fluid
-            .col-md-5.content-row
-              p.centered
-                | Get a ping for an order, buy food
-            .col-md-2
-              img.img-circle(src="/images/phone.png").inlineImage
-            .col-md-5.content-row
-              p.centered
-                | Order some grub, pay
-          .row-fluid
-            .col-md-12
-              p
-                | <br />
-          .row-fluid
-            .col-md-5.content-row
-              p.centered
-                | Head to the buyer, exchange confirmation code
-            .col-md-2
-              img.img-circle(src="/images/location.png").inlineImage
-            .col-md-5.content-row
-              p.centered
-                | Head to the seller, exchange confirmation code
-          .row-fluid
-            .col-md-12
-              p
-                | <br />
-          .row-fluid
-            .col-md-5.content-row
-              p.centered
-                | Hand over the grub, get paid
-            .col-md-2
-              img.img-circle(src="/images/food.png").inlineImage
-            .col-md-5.content-row
-              p.centered
-                | Get the grub, feast
+      .col-lg-2.col-lg-offset-1.buffered-col
+        img.img-circle(src="/images/clock.png").action-icon
+      .col-lg-8.buffered-col
+        .tag Fast
+        |           
+        p.line
+          | Sell your exchange for profit or buy other exchanges, all through the application, using your debit/credit card.  No paper, no worries. 
+        |           
+      .col-lg-2.col-lg-offset-1
+        img.img-circle(src="/images/money.png").action-icon
+      .col-lg-8
+        .tag Cheap
+        |           
+        p.line
+          | Get in the Caf for a few bucks less when you buy
+        |       
+      .col-lg-2.col-lg-offset-1
+        img.img-circle(src="/images/location.png").action-icon
+      .col-lg-8
+        .tag Convenient
+        |           
+        p.line 
+          | Sell your unused exchange from your room.  <br>In your pajamas.  <br>While watching Netflix.   
+          |   
     .row-fluid
       .col-lg-12
-        h1.inlineTitle
-          | "How do I know I won't get screwed?"
-    .row-fluid
-      .col-sm-12.green-background.security
-        h2.centered.white
-          | "The seller didn't show with my food."
-        h3
-          | &nbsp -> You don't get billed.  <br />
-          | &nbsp -> You get a coupon for next time.  <br />
-          | &nbsp -> The seller gets banned.
-        h3
-          | <br />
-        h2.centered.white
-          | "The buyer didn't show to get my food."
-        h3
-          | &nbsp -> You get reimbursed at a discount.   <br />
-          | &nbsp -> The buyer gets banned.  <br /> 
-          | &nbsp -> You can reoffer the food for a discount.
-    .row-fluid
-      .col-lg-12
-        h1.inlineTitle
-          | "Ok, you've convinced me.  Now who exactly are you?"
+        h3.inlineTitle
+          | "Who exactly are you?"
     .row-fluid.profile-wrapper
       .col-lg-6.profile
         img.img-circle(src='/images/Shelby.png').profile-picture
         p.profile-header
           | Shelby
         p.profile-text
-          | Computer Engineering <br /><br />First addicted to coding at age 0.1f.  <br /> <br />From Enid, OK. <br /> <br />Has a background in web/iOS development.
+          | Computer Engineering <br /><br />First addicted to coding at age 0.1f.  <br /> <br />From Enid, OK. <br /> <br />Has a background in web/iOS development. <br /> <br />
       .col-lg-6.profile   
         img.img-circle(src='/images/Bryce.png').profile-picture
         p.profile-header
@@ -164,7 +60,15 @@ block content
           | Chemical Engineering <br /> <br />Last seen 1/10/15 in the basement of Sarkey's.  <br /><br /> From Chicago, IL. <br /> <br />Has a background in tech comm and business strategy. 
     .row-fluid
       .col-xl-12.lower
+        .row-fluid
+          .col-md-12
+            p
+              | <br />
         h1.centered
           a(href='mailto:gochaou@gmail.com') gochaou@gmail.com
 
           //I love Maggie White so much :) 
+        .row-fluid
+          .col-md-12
+            p
+              | <br />
