@@ -15,13 +15,13 @@ var fs = require("fs");
 var bodyParser  = require('body-parser');
 var expressSession = require('express-session');
 var cookieParser = require('cookie-parser');
-//var forceSSL = require('express-force-ssl');
+var forceSSL = require('express-force-ssl');
 var favicon = require('serve-favicon');
 
 
-//var privateKey = fs.readFileSync('/home/ubuntu/privateKey.pem').toString();
-//var cert = fs.readFileSync('/home/ubuntu/cha.crt').toString();
-//var auths = [fs.readFileSync('/home/ubuntu/g1.crt').toString(), fs.readFileSync('/home/ubuntu/g2.crt').toString(), fs.readFileSync('/home/ubuntu/g3.crt').toString()];
+var privateKey = fs.readFileSync('/home/ubuntu/privateKey.pem').toString();
+var cert = fs.readFileSync('/home/ubuntu/cha.crt').toString();
+var auths = [fs.readFileSync('/home/ubuntu/g1.crt').toString(), fs.readFileSync('/home/ubuntu/g2.crt').toString(), fs.readFileSync('/home/ubuntu/g3.crt').toString()];
 
 var app = module.exports = express();
 
@@ -43,7 +43,7 @@ app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
 })); 
 app.use(express.static(__dirname + '/public'));
 
-//app.use(forceSSL);
+app.use(forceSSL);
 
 function restrict(req, res, next) {                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     
   if (req.session && req.session.user) {
@@ -71,12 +71,12 @@ app.post('/api/exchanges/add', restrict, api.addExchange);
 app.post('/api/exchanges/buy', restrict, api.buyExchange);
 
 
-/*https.createServer({
+https.createServer({
     key: privateKey,
     cert: cert,
     ca: auths
 }, app).listen(443);
-*/
+
 
 
 app.get('*', function(req, res){
@@ -96,7 +96,7 @@ http.createServer(app).listen(1000, 'localhost', function(){
   console.log("Listening!");
 });
 
-/*app.listen(80, function(){
+app.listen(80, function(){
   console.log("Express server listening on port %d in %s mode", app.address().port, app.settings.env);
 });
-*/
+
