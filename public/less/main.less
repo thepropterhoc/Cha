@@ -1,3 +1,5 @@
+@primary: #11AA11;
+
 @font-face {
     font-family: sf;
     src: url('/fonts/SanFranciscoText-Thin.otf');
@@ -179,7 +181,7 @@ ul {
 }
 
 .nav-pills>li>a {
-  color:#5cb85c;
+  color: @primary;
   font-weight: 800;
 }
 
@@ -188,7 +190,7 @@ ul {
 }
 
 .nav-pills>li.active>a {
-  background-color:#5cb85c;
+  background-color: @primary;
   font-weight: 800;
 }
 
@@ -212,6 +214,7 @@ ul {
   height: 100%;
   max-width: 100px;
   max-height: 100px;
+  text-color: @primary;
 }
 
 .inlineTitle {
