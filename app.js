@@ -18,11 +18,11 @@ var cookieParser = require('cookie-parser');
 var forceSSL = require('express-force-ssl');
 var favicon = require('serve-favicon');
 
-/*
+
 var privateKey = fs.readFileSync('/home/ubuntu/privateKey.pem').toString();
 var cert = fs.readFileSync('/home/ubuntu/cha.crt').toString();
 var auths = [fs.readFileSync('/home/ubuntu/g1.crt').toString(), fs.readFileSync('/home/ubuntu/g2.crt').toString(), fs.readFileSync('/home/ubuntu/g3.crt').toString()];
-*/
+
 var app = module.exports = express();
 
 // Configuration
@@ -43,7 +43,7 @@ app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
 })); 
 app.use(express.static(__dirname + '/public'));
 
-//app.use(forceSSL);
+app.use(forceSSL);
 
 function restrict(req, res, next) {                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     
   if (req.session && req.session.user) {
@@ -70,14 +70,12 @@ app.get('/api/exchanges/count', api.countExchanges);
 app.post('/api/exchanges/add', restrict, api.addExchange);
 app.post('/api/exchanges/buy', restrict, api.buyExchange);
 
-/*
+
 https.createServer({
     key: privateKey,
     cert: cert,
     ca: auths
 }, app).listen(443);
-*/
-
 
 app.get('*', function(req, res){
   res.send("Page not found!", 404);
